@@ -20,9 +20,9 @@ namespace Entidades_2018
         ConsoleColor colorPrimarioEmpaque;
 
         /// <summary>
-        /// ReadOnly: Retornará la cantidad de ruedas del vehículo
+        /// ReadOnly: Retornará la cantidad de calorias del producto
         /// </summary>
-        protected short CantidadCalorias { get; set; }
+        protected abstract short CantidadCalorias { get; }
 
         /// <summary>
         /// Publica todos los datos del Producto.

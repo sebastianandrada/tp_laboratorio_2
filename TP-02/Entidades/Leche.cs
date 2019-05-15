@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace Entidades_2018
 {
-    class Leche : Producto
+    public class Leche : Producto
     {
         public enum ETipo { Entera, Descremada }
         ETipo tipo;
@@ -23,6 +23,11 @@ namespace Entidades_2018
             : base(patente, marca, color)
         {
             tipo = ETipo.Entera;
+        }
+
+        public Leche(EMarca marca, string patente, ConsoleColor color, ETipo tipo): this(marca, patente, color)
+        {
+            this.tipo = tipo;
         }
 
         /// <summary>

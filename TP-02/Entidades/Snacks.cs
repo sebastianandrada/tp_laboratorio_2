@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades_2018
 {
-    public class Snacks
+    public class Snacks : Producto
     {
         public Snacks(EMarca marca, string patente, ConsoleColor color)
             : base(patente, marca, color)
@@ -28,12 +28,12 @@ namespace Entidades_2018
             StringBuilder sb = new StringBuilder();
 
             sb.AppendLine("SNACKS");
-            sb.AppendLine(base);
-            sb.AppendLine("CALORIAS : {0}", this.CantidadCalorias);
+            sb.AppendLine(base.Mostrar());
+            sb.AppendFormat("CALORIAS : {0}", this.CantidadCalorias);
             sb.AppendLine("");
             sb.AppendLine("---------------------");
 
-            return sb;
+            return sb.ToString();
         }
     }
 }
