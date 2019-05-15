@@ -16,7 +16,7 @@ namespace TP_02_2018
             Console.SetWindowSize(Console.LargestWindowWidth / 2, Console.LargestWindowHeight - 2);
 
             // Nombre del alumno
-            Console.WriteLine("Sebastian Andrada");
+            Console.Title = "Sebastian Andrada";
 
             Changuito changoDeCompras = new Changuito(6);
 

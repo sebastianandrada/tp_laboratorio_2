@@ -87,13 +87,26 @@ namespace Entidades_2018
         /// <returns></returns>
         public static Changuito operator +(Changuito c, Producto p)
         {
-            foreach (Producto producto in c.productos)
+            if (c.espacioDisponible > c.productos.Count)
             {
-                if (producto == p)
-                    return c;
+                bool agrego = true;
+                foreach (Producto producto in c.productos)
+                {
+                    if (producto == p)
+                    {
+                        //return c;
+                        agrego = false;
+                        break;
+                    }
+                        
+                }
+                if (agrego)
+                {
+                    c.productos.Add(p);
+                }
+                //return c;
             }
-
-            c.productos.Add(p);
+            
             return c;
         }
         /// <summary>
@@ -108,6 +121,8 @@ namespace Entidades_2018
             {
                 if (producto == p)
                 {
+                    c.productos.Remove(p);
+                    //c.espacioDisponible--;
                     break;
                 }
             }
