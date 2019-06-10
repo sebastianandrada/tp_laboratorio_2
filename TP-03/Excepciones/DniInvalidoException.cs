@@ -9,13 +9,13 @@ namespace Excepciones
 {
     public class DniInvalidoException : Exception
     {
-        private string mensajeBase = "";
+        private static string mensajeBase = "DNI Invalido";
 
         public DniInvalidoException()
         {
         }
 
-        public DniInvalidoException(Exception exception) : base("", exception)
+        public DniInvalidoException(Exception exception) : base(mensajeBase, exception)
         {
         }
 

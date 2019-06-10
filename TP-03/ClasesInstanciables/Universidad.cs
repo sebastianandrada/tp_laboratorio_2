@@ -76,6 +76,11 @@ namespace ClasesInstanciables
         #endregion
 
         #region "Metodos"
+        /// <summary>
+        /// serializará los datos del Universidad en un XML, incluyendo todos los datos de sus Profesores, Alumnos y Jornadas.
+        /// </summary>
+        /// <param name="uni"></param>
+        /// <returns>True si ha realizado la serializacion correctamente</returns>
         public static bool Guardar(Universidad uni)
         {
             string path = String.Format("{0}\\Universidad.xml", (Environment.GetFolderPath(Environment.SpecialFolder.Desktop)));
@@ -87,6 +92,10 @@ namespace ClasesInstanciables
             return resultado;
         }
 
+        /// <summary>
+        /// retornará un Universidad con todos los datos previamente serializados.
+        /// </summary>
+        /// <returns></returns>
         public static Universidad Leer()
         {
             string path = String.Format("{0}\\Universidad.xml", (Environment.GetFolderPath(Environment.SpecialFolder.Desktop)));
@@ -98,6 +107,11 @@ namespace ClasesInstanciables
             return uni;
         }
 
+        /// <summary>
+        /// Metodo privado que retorna todos los datos de una universidad
+        /// </summary>
+        /// <param name="uni"></param>
+        /// <returns></returns>
         private static string MostrarDatos(Universidad uni)
         {
             StringBuilder sb = new StringBuilder();
@@ -111,6 +125,12 @@ namespace ClasesInstanciables
         #endregion
 
         #region "Operadores"
+        /// <summary>
+        /// Retorna si una Universidad es igual a un Alumno, si el mismo está inscripto en ella.
+        /// </summary>
+        /// <param name="u"></param>
+        /// <param name="a"></param>
+        /// <returns>booleano que indica si esta inscripto</returns>
         public static bool operator ==(Universidad u, Alumno a)
         {
             bool estaInscripto = false;
@@ -125,11 +145,23 @@ namespace ClasesInstanciables
             return estaInscripto;
         }
 
+        /// <summary>
+        /// Retornara si un alumno no esta inscrito en una universidad
+        /// </summary>
+        /// <param name="u"></param>
+        /// <param name="a"></param>
+        /// <returns>Retornara si un alumno no esta inscrito en una universidad</returns>
         public static bool operator !=(Universidad u, Alumno a)
         {
             return !(u == a);
         }
 
+        /// <summary>
+        /// Una Universidad será igual a un Profesor si el mismo está dando clases en él.
+        /// </summary>
+        /// <param name="g"></param>
+        /// <param name="i"></param>
+        /// <returns>Retorna un booleano indicando si un profesor da clases en la universidad</returns>
         public static bool operator ==(Universidad g, Profesor i)
         {
             bool estaDandoClases = false;
@@ -144,11 +176,23 @@ namespace ClasesInstanciables
             return estaDandoClases;
         }
 
+        /// <summary>
+        /// Retorno true si un profesor no está dando clases en una universidad
+        /// </summary>
+        /// <param name="g"></param>
+        /// <param name="i"></param>
+        /// <returns></returns>
         public static bool operator !=(Universidad g, Profesor i)
         {
             return !(g == i);
         }
 
+        /// <summary>
+        /// retornará el primer Profesor capaz de dar esa clase. Sino, lanzará la Excepción SinProfesorException.
+        /// </summary>
+        /// <param name="u"></param>
+        /// <param name="clase"></param>
+        /// <returns>Un Profesor, o una excepcion</returns>
         public static Profesor operator ==(Universidad u, Universidad.EClases clase)
         {
             Profesor profesor = null;
@@ -167,6 +211,12 @@ namespace ClasesInstanciables
             return profesor;
         }
 
+        /// <summary>
+        /// Retorna el primer Profesor que no pueda dar la clase.
+        /// </summary>
+        /// <param name="u"></param>
+        /// <param name="clase"></param>
+        /// <returns>Un Profesor, o una excepcion si no pudo encontrar ningun profesor que no pueda dar la clase</returns>
         public static Profesor operator !=(Universidad u, Universidad.EClases clase)
         {
             Profesor profesor = null;
@@ -185,6 +235,13 @@ namespace ClasesInstanciables
             return profesor;
         }
 
+        /// <summary>
+        /// Al agregar una clase a una Universidad se deberá generar y agregar una nueva Jornada indicando la
+        /// clase, un Profesor que pueda darla y la lista de alumnos que la toman
+        /// </summary>
+        /// <param name="g"></param>
+        /// <param name="clase"></param>
+        /// <returns>La misma universidad, con la clase agregada en una jornada</returns>
         public static Universidad operator +(Universidad g, EClases clase)
         {
             Profesor profesor = (g == clase);
@@ -201,6 +258,12 @@ namespace ClasesInstanciables
             return g;
         }
 
+        /// <summary>
+        /// Agrega un alumno a una universidad, si es que este no pertenece a la universidad
+        /// </summary>
+        /// <param name="u"></param>
+        /// <param name="a"></param>
+        /// <returns>La misma universidad con el alumno inscripto, o sin el alumno inscripto en caso de ya pertenecer</returns>
         public static Universidad operator +(Universidad u, Alumno a)
         {
             if (u != a)
@@ -210,6 +273,12 @@ namespace ClasesInstanciables
             return u;
         }
 
+        /// <summary>
+        /// Agrega un profesor a una universidad, si es que este no da clases en ella
+        /// </summary>
+        /// <param name="u"></param>
+        /// <param name="i"></param>
+        /// <returns>La misma universidad, con el profesor en caso que no pertezca con anterioridad</returns>
         public static Universidad operator +(Universidad u, Profesor i)
         {
             if (u != i)
@@ -221,6 +290,10 @@ namespace ClasesInstanciables
         #endregion
 
         #region "Sobrecargas"
+        /// <summary>
+        /// Metodo publico, que retorna string con todos los datos de la universidad
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return MostrarDatos(this);

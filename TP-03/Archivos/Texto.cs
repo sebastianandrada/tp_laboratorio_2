@@ -10,6 +10,12 @@ namespace Archivos
 {
     public class Texto : IArchivo<String>
     {
+        /// <summary>
+        /// Persistirá en un archivo txt un string dado, en caso de ocurrir un error lanzará excepcion
+        /// </summary>
+        /// <param name="archivo"></param>
+        /// <param name="datos"></param>
+        /// <returns>true, en caso de haber escrito el txt correctamente</returns>
         public bool Guardar(string archivo, string datos)
         {
             bool resultado = false;
@@ -30,6 +36,12 @@ namespace Archivos
             return resultado;
         }
 
+        /// <summary>
+        /// Leerá un archivo txt y lo almacenara en la referencia datos, en caso de ocurrir un error lanzará una excepcion
+        /// </summary>
+        /// <param name="archivo"></param>
+        /// <param name="datos"></param>
+        /// <returns>true, en caso de haber leido el archivo correctamente</returns>
         public bool Leer(string archivo, out string datos)
         {
             bool resultado = false;

@@ -67,6 +67,11 @@ namespace ClasesInstanciables
         #endregion
 
         #region "Metodos"
+        /// <summary>
+        /// Guardará todos los datos de una Jornada en un archivo de texto que se localizará en el escritorio
+        /// </summary>
+        /// <param name="jornada">Objeto de tipo Jornada</param>
+        /// <returns>Retornará true si el archivo se ha generado correctamente</returns>
         public static bool Guardar(Jornada jornada)
         {
             bool resultado = false;
@@ -78,6 +83,10 @@ namespace ClasesInstanciables
             return resultado;
         }
 
+        /// <summary>
+        /// Leerá los datos de un archivo, que contiene los datos de una jornada
+        /// </summary>
+        /// <returns>Retornará un string con los datos de Jornada.ToString()</returns>
         public string Leer()
         {
             string path = String.Format("{0}\\Jornada.txt", (Environment.GetFolderPath(Environment.SpecialFolder.Desktop)));
@@ -91,6 +100,12 @@ namespace ClasesInstanciables
         #endregion
 
         #region "Operadores"
+        /// <summary>
+        /// Indica si un alumno participa de la clase
+        /// </summary>
+        /// <param name="j"></param>
+        /// <param name="a"></param>
+        /// <returns>true si participa de la clase</returns>
         public static bool operator ==(Jornada j, Alumno a)
         {
             bool participaEnClase = false;
@@ -105,11 +120,23 @@ namespace ClasesInstanciables
             return participaEnClase;
         }
 
+        /// <summary>
+        /// Indicara si un alumno no participa de la clase de jornada
+        /// </summary>
+        /// <param name="j"></param>
+        /// <param name="a"></param>
+        /// <returns>true si el alumno no participa de la clase</returns>
         public static bool operator !=(Jornada j, Alumno a)
         {
             return !(j == a);
         }
 
+        /// <summary>
+        /// Agregará un alumno a la clase, si es que el alumno no pertenece a la clase
+        /// </summary>
+        /// <param name="j"></param>
+        /// <param name="a"></param>
+        /// <returns>la misma jornada, con el alumno agregado a la clase</returns>
         public static Jornada operator +(Jornada j, Alumno a)
         {
             bool estaCargado = false;
@@ -130,6 +157,10 @@ namespace ClasesInstanciables
         #endregion
 
         #region "Sobrecargas"
+        /// <summary>
+        /// Retorna un string con todos los datos de una jornada
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();

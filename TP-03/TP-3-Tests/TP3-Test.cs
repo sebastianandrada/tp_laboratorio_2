@@ -6,7 +6,7 @@ using Excepciones;
 namespace TP_3_Tests
 {
     [TestClass]
-    public class ClasesAbtractasTest
+    public class TP3Test
     {
         [TestMethod]
         [ExpectedException(typeof(NacionalidadInvalidaException))]
@@ -22,6 +22,22 @@ namespace TP_3_Tests
         {
             string dniIncorrecto = "37011abc";
             Profesor profesor = new Profesor(2, "Marcelo", "Fasso", dniIncorrecto, EntidadesAbstractas.Persona.ENacionalidad.Argentino);
+        }
+
+        [TestMethod]
+        public void DniConPuntos()
+        {
+            string dni = "30.123.456";
+            Alumno alumno = new Alumno(3, "Luciana", "Acevedo", dni, EntidadesAbstractas.Persona.ENacionalidad.Argentino, Universidad.EClases.Laboratorio);
+            Assert.AreEqual(30123456, alumno.DNI);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(NacionalidadInvalidaException))]
+        public void DniConValoresNegativos()
+        {
+            string dniIncorrecto = "-12";
+            Profesor profesor = new Profesor(12, "Lucia", "Palomitini", dniIncorrecto, EntidadesAbstractas.Persona.ENacionalidad.Argentino);
         }
 
         [TestMethod]

@@ -30,7 +30,9 @@ namespace ClasesInstanciables
         #endregion
 
         #region "Metodos"
-
+        /// <summary>
+        /// Asignara dos clases al profesor de manera aleatoria.
+        /// </summary>
         private void randomClases()
         {
             for(int i = 0; i<2; i++)
@@ -54,6 +56,10 @@ namespace ClasesInstanciables
             }
         }
 
+        /// <summary>
+        /// metodo protected que retorna todos los datos de un profesor
+        /// </summary>
+        /// <returns>un string que representa los datos de un profesor</returns>
         protected override string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();
@@ -62,6 +68,10 @@ namespace ClasesInstanciables
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Retornara un string que representa las clases del dia del profesor
+        /// </summary>
+        /// <returns></returns>
         protected override string ParticiparEnClase()
         {
             StringBuilder sb = new StringBuilder();
@@ -75,6 +85,12 @@ namespace ClasesInstanciables
         #endregion
 
         #region "Sobrecargas"
+        /// <summary>
+        /// Indicará si un profesor da una clase
+        /// </summary>
+        /// <param name="i"></param>
+        /// <param name="clases"></param>
+        /// <returns>Un booleano que representa si un profesor imparte una clase</returns>
         public static bool operator ==(Profesor i, Universidad.EClases clases)
         {
             bool daClase = false;
@@ -89,11 +105,21 @@ namespace ClasesInstanciables
             return daClase;
         }
 
+        /// <summary>
+        /// Indicará si un profesor no da una clase
+        /// </summary>
+        /// <param name="i"></param>
+        /// <param name="clases"></param>
+        /// <returns>Un booleano que representa si un profesor NO imparte una clase</returns>
         public static bool operator !=(Profesor i, Universidad.EClases clases)
         {
             return !(i == clases);
         }
 
+        /// <summary>
+        /// Retornara un string con todos los datos de un profesor
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return this.MostrarDatos();
